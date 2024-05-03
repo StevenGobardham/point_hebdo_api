@@ -11,6 +11,8 @@ public class User extends AbstractEntity{
     private String email;
     private String firstName;
     private String lastName;
+    private boolean manager;
+    private boolean archive;
 
     public String getUsername() {
         return username;
@@ -51,4 +53,21 @@ public class User extends AbstractEntity{
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public boolean isManager() {
+        return manager;
+    }
+
+    public void setManager(boolean manager) {
+        this.manager = manager;
+    }
+
+    public boolean isArchive() {
+        return archive;
+    }
+
+    public void setArchive(boolean archive) {
+        this.archive = archive;
+    }
+
 }

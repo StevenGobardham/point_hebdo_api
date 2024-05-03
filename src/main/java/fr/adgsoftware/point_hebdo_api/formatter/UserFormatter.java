@@ -19,6 +19,8 @@ public class UserFormatter implements IFormatter<User, UserDto>{
         userDto.setEmail(entity.getEmail());
         userDto.setFirstName(entity.getFirstName());
         userDto.setLastName(entity.getLastName());
+        userDto.setManager(entity.isManager());
+        userDto.setArchive(entity.isArchive());
         return userDto;
     }
 
@@ -30,6 +32,14 @@ public class UserFormatter implements IFormatter<User, UserDto>{
         user.setEmail(dto.getEmail());
         user.setFirstName(dto.getFirstName());
         user.setLastName(dto.getLastName());
+        user.setPassword(dto.getPassword());
+        if(dto.getManager() != null){
+            user.setManager(dto.getManager());
+        }
+        if(dto.getArchive() != null){
+            user.setArchive(dto.getArchive());
+        }
+
         return user;
     }
 

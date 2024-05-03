@@ -1,6 +1,8 @@
 package fr.adgsoftware.point_hebdo_api.dto.user;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import fr.adgsoftware.point_hebdo_api.dto.AbstractDto;
+
 
 public class UserDto extends AbstractDto {
     private String username;
@@ -8,6 +10,9 @@ public class UserDto extends AbstractDto {
     private String email;
     private String firstName;
     private String lastName;
+    private Boolean manager;
+    private Boolean archive;
+
 
     public String getUsername() {
         return username;
@@ -47,5 +52,17 @@ public class UserDto extends AbstractDto {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Boolean getManager() {return manager;}
+
+    public void setManager(Boolean manager) {this.manager = manager;}
+
+    public Boolean getArchive() {
+        return archive;
+    }
+
+    public void setArchive(Boolean archive) {
+        this.archive = archive;
     }
 }
