@@ -36,8 +36,6 @@ public class PointHebdoDto extends AbstractDto {
     }
 
 
-
-
     public UserDto getUser() {
         return user;
     }

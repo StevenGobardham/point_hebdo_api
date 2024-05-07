@@ -50,6 +50,7 @@ public class UserFormatter implements IFormatter<User, UserDto>{
         ConnectedUserDto dto = new ConnectedUserDto();
         dto.setId(entity.getId());
         dto.setUsername(entity.getUsername());
+        dto.setManager(entity.isManager());
         return dto;
     }
 }

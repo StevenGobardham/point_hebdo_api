@@ -1,7 +1,6 @@
 package fr.adgsoftware.point_hebdo_api.controller;
 
 import fr.adgsoftware.point_hebdo_api.dto.PointHebdoDto;
-import fr.adgsoftware.point_hebdo_api.dto.standardResponse.BooleanResponseDto;
 import fr.adgsoftware.point_hebdo_api.dto.user.UserDto;
 import fr.adgsoftware.point_hebdo_api.service.PointHebdoService;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +18,7 @@ public class PointHebdoController {
 
     @GetMapping()
     public List<PointHebdoDto> selectAll () {
-        return pointHebdoService.getAllDto();
+        return pointHebdoService.getListDto();
     }
 
     @PostMapping
@@ -30,6 +29,16 @@ public class PointHebdoController {
     @GetMapping("/{id}")
     public PointHebdoDto getById(@PathVariable("id") Long id) {
         return pointHebdoService.selectDtoById(id);
+    }
+
+    @PutMapping()
+    public PointHebdoDto update(@RequestBody PointHebdoDto pointHebdoDto) {
+        return pointHebdoService.update(pointHebdoDto);
+    }
+
+    @PutMapping("/valide")
+    public PointHebdoDto validate(@RequestBody PointHebdoDto pointHebdoDto) {
+        return pointHebdoService.validate(pointHebdoDto);
     }
 
 }

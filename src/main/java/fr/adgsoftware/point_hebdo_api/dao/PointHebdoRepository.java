@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface PointHebdoRepository extends JpaRepository<PointHebdo, Long> {
 
-    List<PointHebdo> findByUserUsername(String username);
+    List<PointHebdo> findByUserId(Long id);
 
 }

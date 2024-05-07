@@ -5,6 +5,7 @@ import fr.adgsoftware.point_hebdo_api.dto.AbstractDto;
 public class ConnectedUserDto extends AbstractDto {
     private Long id;
     private String username;
+    public Boolean manager;
 
     @Override
     public Long getId() {
@@ -22,5 +23,13 @@ public class ConnectedUserDto extends AbstractDto {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public boolean isManager() {
+        return manager;
+    }
+
+    public void setManager(boolean manager) {
+        this.manager = manager;
     }
 }
