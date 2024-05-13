@@ -2,23 +2,28 @@ package fr.adgsoftware.point_hebdo_api.service;
 
 import fr.adgsoftware.point_hebdo_api.dao.PointHebdoRepository;
 import fr.adgsoftware.point_hebdo_api.dto.PointHebdoDto;
+import fr.adgsoftware.point_hebdo_api.dto.PointHebdoLightDto;
+import fr.adgsoftware.point_hebdo_api.dto.user.UserDto;
 import fr.adgsoftware.point_hebdo_api.dto.util.ConnectedUserDto;
 import fr.adgsoftware.point_hebdo_api.entity.PointHebdo;
 import fr.adgsoftware.point_hebdo_api.entity.ProjetDetails;
 import fr.adgsoftware.point_hebdo_api.formatter.PointHebdoFormatter;
 import fr.adgsoftware.point_hebdo_api.formatter.ProjetDetailsFormatter;
+import fr.adgsoftware.point_hebdo_api.formatter.UserFormatter;
 import jakarta.transaction.Transactional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PointHebdoService extends GenericService<PointHebdo, PointHebdoDto> {
 
     private static final Logger logger = LogManager.getLogger(PointHebdoService.class);
     private final ProjetDetailsFormatter projetDetailsFormatter;
+    private final UserFormatter userFormatter;
 
     private PointHebdoRepository pointHebdoRepository;
     private PointHebdoFormatter pointHebdoFormatter;
@@ -27,12 +32,14 @@ public class PointHebdoService extends GenericService<PointHebdo, PointHebdoDto>
     public PointHebdoService(PointHebdoRepository pointHebdoRepository,
                              PointHebdoFormatter pointHebdoFormatter,
                              ProjetDetailsFormatter projetDetailsFormatter,
-                             ConnectedUserService connectedUserService) {
+                             ConnectedUserService connectedUserService,
+                             UserFormatter userFormatter) {
         super(pointHebdoRepository, pointHebdoFormatter);
         this.pointHebdoRepository = pointHebdoRepository;
         this.pointHebdoFormatter = pointHebdoFormatter;
         this.projetDetailsFormatter = projetDetailsFormatter;
         this.connectedUserService = connectedUserService;
+        this.userFormatter = userFormatter;
     }
 
     @Transactional
@@ -91,6 +98,28 @@ public class PointHebdoService extends GenericService<PointHebdo, PointHebdoDto>
         }
     }
 
+    public List<PointHebdoLightDto> getLightListDto() {
+        ConnectedUserDto user = connectedUserService.getCurrentUser();
+        List<PointHebdo> pointHebdos;
+        if (user.isManager()) {
+            pointHebdos = pointHebdoRepository.findAll();
+        } else {
+            pointHebdos = pointHebdoRepository.findByUserId(user.getId());
+        }
+        return pointHebdos.stream()
+                .map(pointHebdo -> {
+                    PointHebdoLightDto lightDto = new PointHebdoLightDto();
+                    lightDto.setId(pointHebdo.getId());
+                    lightDto.setEventDate(pointHebdo.getEventDate());
+                    lightDto.setValidate(pointHebdo.isValidate());
 
+                    // Utiliser userFormatter pour formatter l'utilisateur en DTO
+                    UserDto userDto = userFormatter.entityToDto(pointHebdo.getUser());
+                    lightDto.setUser(userDto);
+
+                    return lightDto;
+                })
+                .collect(Collectors.toList());
+    }
 
 }

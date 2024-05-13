@@ -1,6 +1,7 @@
 package fr.adgsoftware.point_hebdo_api.controller;
 
 import fr.adgsoftware.point_hebdo_api.dto.PointHebdoDto;
+import fr.adgsoftware.point_hebdo_api.dto.PointHebdoLightDto;
 import fr.adgsoftware.point_hebdo_api.dto.user.UserDto;
 import fr.adgsoftware.point_hebdo_api.service.PointHebdoService;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +40,11 @@ public class PointHebdoController {
     @PutMapping("/valide")
     public PointHebdoDto validate(@RequestBody PointHebdoDto pointHebdoDto) {
         return pointHebdoService.validate(pointHebdoDto);
+    }
+
+    @GetMapping("/light")
+    public List<PointHebdoLightDto> selectAllLight() {
+        return pointHebdoService.getLightListDto();
     }
 
 }
