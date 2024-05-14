@@ -12,5 +12,7 @@ public interface PointHebdoRepository extends JpaRepository<PointHebdo, Long> {
 
     List<PointHebdo> findByUserId(Long id);
 
+    List<PointHebdo> findByIdIn(List<Long> idList);
+
 
 }

@@ -4,6 +4,7 @@ import fr.adgsoftware.point_hebdo_api.dto.PointHebdoDto;
 import fr.adgsoftware.point_hebdo_api.dto.PointHebdoLightDto;
 import fr.adgsoftware.point_hebdo_api.dto.user.UserDto;
 import fr.adgsoftware.point_hebdo_api.service.PointHebdoService;
+import jakarta.websocket.server.PathParam;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +31,11 @@ public class PointHebdoController {
     @GetMapping("/{id}")
     public PointHebdoDto getById(@PathVariable("id") Long id) {
         return pointHebdoService.selectDtoById(id);
+    }
+
+    @PostMapping("/export")
+    public List<PointHebdoDto> getByIdIn(@RequestBody List<Long> idList) {
+        return pointHebdoService.selectDtoByIdIn(idList);
     }
 
     @PutMapping()

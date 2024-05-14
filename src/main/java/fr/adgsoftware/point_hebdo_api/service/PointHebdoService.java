@@ -122,4 +122,9 @@ public class PointHebdoService extends GenericService<PointHebdo, PointHebdoDto>
                 .collect(Collectors.toList());
     }
 
+    public List<PointHebdoDto> selectDtoByIdIn(List<Long> ids) {
+        List<PointHebdo> entities = this.pointHebdoRepository.findByIdIn(ids);
+        return pointHebdoFormatter.entityToDto(entities);
+    }
+
 }

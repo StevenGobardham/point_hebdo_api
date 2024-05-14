@@ -1,0 +1,10 @@
+INSERT INTO user (username, first_name, last_name, email, password, manager) VALUES
+                                                                                 ('Franco', 'Franco', 'ARFUSO', 'franco.arfuso@adg-software.fr', '$2y$10$6sRsyznO9SnmWd/2DZjkcupD4yJfTDCAxGCyjQQpHQP2s/h4POwLe', 1),
+                                                                                 ('Gaëlle', 'Gaëlle', 'DELOUCHE', 'Gaelle.delouche@adg-software.fr', '$2y$10$6sRsyznO9SnmWd/2DZjkcupD4yJfTDCAxGCyjQQpHQP2s/h4POwLe', 0),
+                                                                                 ('Linda', 'Linda', 'BEAUCERON', 'linda.beauceron@adg-software.fr', '$2y$10$6sRsyznO9SnmWd/2DZjkcupD4yJfTDCAxGCyjQQpHQP2s/h4POwLe', 0),
+                                                                                 ('Alexie', 'Alexie', 'GROSBOIS', 'alexie.grosbois@adg-software.fr', '$2y$10$6sRsyznO9SnmWd/2DZjkcupD4yJfTDCAxGCyjQQpHQP2s/h4POwLe', 0),
+                                                                                 ('Aurélien', 'Aurélien', 'BLOT', 'aurelien.blot@adg-software.fr', '$2y$10$6sRsyznO9SnmWd/2DZjkcupD4yJfTDCAxGCyjQQpHQP2s/h4POwLe', 0),
+                                                                                 ('Quentin', 'Quentin', 'PIPELIER', 'quentin.pipelier@adg-software.fr', '$2y$10$6sRsyznO9SnmWd/2DZjkcupD4yJfTDCAxGCyjQQpHQP2s/h4POwLe', 0),
+                                                                                 ('Valentin', 'Valentin', 'TAZIR', 'valentin.tazir@adg-software.fr', '$2y$10$6sRsyznO9SnmWd/2DZjkcupD4yJfTDCAxGCyjQQpHQP2s/h4POwLe', 0),
+                                                                                 ('Julien', 'Julien', 'LEGENDRE', 'julien.legendre@adg-software.fr', '$2y$10$6sRsyznO9SnmWd/2DZjkcupD4yJfTDCAxGCyjQQpHQP2s/h4POwLe', 0),
+                                                                                 ('Fabien', 'Fabien', 'SOYER', 'fabien.soyer@adg-software.fr', '$2y$10$6sRsyznO9SnmWd/2DZjkcupD4yJfTDCAxGCyjQQpHQP2s/h4POwLe', 0);
