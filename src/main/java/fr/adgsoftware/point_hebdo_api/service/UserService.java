@@ -77,4 +77,9 @@ public class UserService extends GenericService<User, UserDto>{
         return userFormatter.entityToDto(user);
     }
 
+    public List<UserDto> selectAllArchived(){
+        List<User> activeUsers = userRepository.findByArchiveTrue();
+        return userFormatter.entityToDto(activeUsers);
+    }
+
 }

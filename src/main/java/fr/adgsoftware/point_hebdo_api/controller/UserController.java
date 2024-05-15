@@ -29,6 +29,10 @@ public class UserController {
     public List<UserDto> selectAll () {
         return userService.getAllDto();
     }
+    @GetMapping("/archived")
+    public List<UserDto> selectAllArchived () {
+        return userService.selectAllArchived();
+    }
 
     @PostMapping()
     public BooleanResponseDto createUser(@RequestBody UserDto userDto) {
